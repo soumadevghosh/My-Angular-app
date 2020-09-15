@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="addIngredientForm" autocomplete="off">
+            <div class="row">
+                <mat-form-field class="col-sm-5">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Name">
+                    <!-- <mat-error *ngIf="ItemForm.controls['itemName'].errors?.required">Item Name is Required</mat-error>
+                    <mat-error *ngIf="ItemForm.controls['itemName'].errors?.pattern">Item Name is Invalid</mat-error> -->
+                </mat-form-field>
+                <mat-form-field class="col-sm-3">
+                    <mat-label>Amount</mat-label>
+                    <input matInput formControlName="amount" placeholder="Rs.">
+                    <!-- <mat-error *ngIf="ItemForm.controls['itemName'].errors?.required">Item Name is Required</mat-error>
+                    <mat-error *ngIf="ItemForm.controls['itemName'].errors?.pattern">Item Name is Invalid</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button mat-raised-button style="background-color: green;">Add</button>
+                    <button mat-raised-button color="warn">Delete</button>
+                    <button mat-raised-button>Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
