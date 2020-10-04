@@ -1,25 +1,30 @@
 <div class="row">
     <div class="col-xs-12">
-        <form [formGroup]="addIngredientForm" autocomplete="off">
+        <form [formGroup]="addIngredientForm" (ngSubmit)="onSubmit()" autocomplete="off" #ingredientForm="ngForm">
             <div class="row">
-                <mat-form-field class="col-sm-5">
+                <mat-form-field class="col-md-7">
                     <mat-label>Name</mat-label>
-                    <input matInput formControlName="name" placeholder="Name">
-                    <!-- <mat-error *ngIf="ItemForm.controls['itemName'].errors?.required">Item Name is Required</mat-error>
-                    <mat-error *ngIf="ItemForm.controls['itemName'].errors?.pattern">Item Name is Invalid</mat-error> -->
+                    <input matInput formControlName="name" placeholder="Name" required>
+                    <mat-error *ngIf="addIngredientForm.controls['name'].errors?.required">Item Name is Required
+                    </mat-error>
+                    <!-- <mat-error *ngIf="ItemForm.controls['itemName'].errors?.pattern">Item Name is Invalid</mat-error> -->
                 </mat-form-field>
-                <mat-form-field class="col-sm-3">
+                <mat-form-field class="col-md-4">
                     <mat-label>Amount</mat-label>
-                    <input matInput formControlName="amount" placeholder="Rs.">
-                    <!-- <mat-error *ngIf="ItemForm.controls['itemName'].errors?.required">Item Name is Required</mat-error>
-                    <mat-error *ngIf="ItemForm.controls['itemName'].errors?.pattern">Item Name is Invalid</mat-error> -->
+                    <input matInput formControlName="amount" placeholder="Rs." required>
+                    <mat-error *ngIf="addIngredientForm.controls['amount'].errors?.required">Amount is Required
+                    </mat-error>
+                    <!-- <mat-error *ngIf="ItemForm.controls['itemName'].errors?.pattern">Item Name is Invalid</mat-error> -->
                 </mat-form-field>
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <button mat-raised-button style="background-color: green;">Add</button>
-                    <button mat-raised-button color="warn">Delete</button>
-                    <button mat-raised-button>Clear</button>
+                    <button type="submit" mat-raised-button style="background-color: orange;"
+                        [disabled]="!addIngredientForm.valid">
+                        {{editMode?'Update':'Add'}}
+                    </button>
+                    <button *ngIf="editMode" mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+                    <button type="button" mat-raised-button (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>
